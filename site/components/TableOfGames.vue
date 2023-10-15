@@ -1,6 +1,11 @@
 <script setup>
+  const props = defineProps({
+    games: {
+      type: Array,
+      required: true,
+    },
+  })
   let favorited = ref(false)
-  const { data: games } = await useAsyncData('games', () => $fetch('/api/games/'))
 
   const addToFavorites = () => {
     favorited.value = !favorited.value
@@ -8,9 +13,8 @@
 </script>
 
 <template>
-  <h2>table here</h2>
-  <div class="container mx-auto">
-    <table class="table-auto">
+  <div class="container mx-auto flex">
+    <table class="table-auto w-full">
       <thead>
         <tr>
           <th></th>
@@ -22,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="game in games.games" :key="game.id" class="border border-sky-500">
+        <tr v-for="game in props.games" :key="game.id" class="border border-sky-500">
           <td>
             <figure class="game__picture">
               <img class="rounded shadow-2xl" :src="game.thumbnail" :alt="game.title" />
