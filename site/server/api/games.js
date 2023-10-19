@@ -1,10 +1,18 @@
 export default defineEventHandler (async (event) => {
   let API_URL = `${ process.env.BASE_API_URL }?platform=`;
   const defaultPlatform = 'pc';
-  const filteredValue = getQuery(event)['platform'] ? getQuery(event)['platform'] : defaultPlatform;
-  // api/games?platform=browser&category=mmorpg
+  const { platform, category } = getQuery(event);
+  let filter = undefined;
+
+  if(platform && category) {
+    filter = `${ platform }&category=${ category }`
   
-  API_URL = `${ API_URL }${ filteredValue }`;
+  } else if (platform && !category) {
+    filter = platform
+
+  } 
+  
+  API_URL = `${ API_URL }${ filter ? filter : defaultPlatform }`;
 
   const getData = async () => {
     const response = await fetch(`${ API_URL }`);

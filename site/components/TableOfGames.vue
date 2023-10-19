@@ -5,11 +5,24 @@
       required: true,
     },
   })
-  let favorited = ref(false)
 
-  const addToFavorites = () => {
-    favorited.value = !favorited.value
+  const favoritedGames = ref(getFavoritedGames());
+  
+  const handleFavorites = (game) => {
+    if(!favoritedGames.value.includes(game.id)) {
+      setFavorite(game);
+      favoritedGames.value.push(game.id);
+    } else {
+      removeFavorite(game.id);
+      favoritedGames.value = favoritedGames.value.filter(x => x !== game.id);
+    }
   }
+  
+  const toggleFavorite = computed(() => {
+    return (id) => favoritedGames.value.includes(id) ? '/heart-icon-filled.svg' : '/heart-icon.svg';
+  })
+
+
 </script>
 
 <template>
@@ -37,7 +50,9 @@
           <td class="text-left">{{ game.developer }}</td>
           <td class="text-left">{{ game.platform }}</td>
           <td class="text-center">
-            <img @click="addToFavorites" class="cursor-pointer" :src="favorited ? '/heart-icon-filled.svg' : '/heart-icon.svg'"/>
+            <ClientOnly>
+              <img @click="handleFavorites(game)" class="cursor-pointer" :src="toggleFavorite(game.id)"/>
+            </ClientOnly>
           </td>
         </tr>
       </tbody>
