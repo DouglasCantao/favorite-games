@@ -5,7 +5,7 @@
     <nav class="container mx-auto p-4 flex">
       <ul class="flex gap-4">
         <li><nuxt-link to="/">Home</nuxt-link></li>
-        <li><nuxt-link to="/favoriteGames">Favorites</nuxt-link></li>
+        <li><nuxt-link to="/favorite-games">Favorites</nuxt-link></li>
       </ul>
     </nav>
   </header>
