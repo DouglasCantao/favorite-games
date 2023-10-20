@@ -17,7 +17,7 @@ watch(filterParams, async () => {
 <template>
   <div class="container:xl mx-auto">
     <games-filter @filter="(pay) => { filterParams.value = pay }"/>
-    <games-table :games="gamesList"/>
+    <games-container :games="gamesList"/>
   </div>
 </template>
   

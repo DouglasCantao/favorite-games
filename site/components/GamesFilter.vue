@@ -64,7 +64,7 @@
 </script>
 
 <template>
-  <div class="container mx-auto flex h-20 justify-start items-center shadow-2xl bg-slate-400 p-3">
+  <div class="game-filter container mx-auto flex h-20 justify-start items-center shadow-2xl bg-slate-400 p-3">
     <div class="w-20">
       <h3>Filters:</h3>
     </div>
@@ -88,3 +88,14 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+  @media (max-width: 62em) {
+  .game-filter {
+    height: auto;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+}
+</style>

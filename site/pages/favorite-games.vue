@@ -7,7 +7,7 @@
 <template>
   <div class="container:xl mx-auto">
     <client-only>
-      <games-table :games="favoritesGames" />
+      <games-container :games="favoritesGames" />
     </client-only>
   </div>
 </template>
