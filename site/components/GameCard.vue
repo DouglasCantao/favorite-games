@@ -44,18 +44,18 @@
 </script>
 <template>
   <div class="game-card flex flex-col shadow-md w-60 " :class="cardShadowColor">
-    <figure>
-      <img class="rounded shadow-2xl" :src="thumbnail" :alt="game.title" />
-    </figure>
-    <div class="flex flex-col items-center p-2 h-52 gap-2 justify-between">
-      <div class=" text-sky-600 text-xl text-center">{{ title }}</div>
-      <div class="text-base">{{ genre }} - {{ platform }}</div>
-      <div class="text-base">{{ developer }}</div>
-      <div class="text-center text-sm line-clamp-2">{{ short_description }}</div>
-      <ClientOnly>
-        <img @click="handleFavorites(game)" class="cursor-pointer w-8" :src="toggleFavorite(game.id)"/>
-      </ClientOnly>
-    </div>
+    <ClientOnly>
+      <figure>
+        <img loading="lazy" class="rounded shadow-2xl" :src="thumbnail" :alt="game.title" />
+      </figure>
+      <div class="flex flex-col items-center p-2 h-52 gap-2 justify-between">
+        <div class=" text-sky-600 text-xl text-center">{{ title }}</div>
+        <div class="text-base">{{ genre }} - {{ platform }}</div>
+        <div class="text-base">{{ developer }}</div>
+        <div class="text-center text-sm line-clamp-2">{{ short_description }}</div>
+          <img @click="handleFavorites(game)" class="cursor-pointer w-8" :src="toggleFavorite(game.id)"/>
+        </div>
+    </ClientOnly>
   </div>
 </template>
 

@@ -21,11 +21,6 @@ export default defineEventHandler (async (event) => {
   }
   let games = await getData();
 
-  const LIMIT = 10;
-  games = games.slice(0, LIMIT);
-
-
-
   return {
     games: games
   }
