@@ -31,7 +31,7 @@ BASE_API_URL_SINGLE_DATA=https://www.freetogame.com/api/game
 Run the command below from the root directory, which is the folder where the *docker-compose.yml* file is.
 
 ```
-sudo docker compose up
+sudo docker compose up or sudo docker-compose up
 ```
 or
 
