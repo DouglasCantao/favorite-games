@@ -65,25 +65,25 @@
 
 <template>
   <div class="game-filter container mx-auto flex h-20 justify-start items-center shadow-2xl bg-slate-400 p-3">
-    <div class="w-20">
-      <h3>Filters:</h3>
+    <div class="filter-label w-20">
+      <h3>Filters</h3>
     </div>
 
-    <div class="w-64">
+    <div class="select-filter w-64">
       <label for="platform-select" class="p-2">Platform: </label>
       <select @change="$emit('filter', {selectedPlatform, selectedGenre})" v-model="selectedPlatform" name="platform" id="platform-select" class="h-9 w-40 rounded-md text-center">
         <option v-for="item of platforms" :value="item.id">{{ item.name }}</option>
       </select>
     </div>
 
-    <div class="w-64">
+    <div class="select-filter w-64">
       <label for="genre-select" class="p-2">Genre: </label>
       <select @change="$emit('filter', {selectedPlatform, selectedGenre})" v-model="selectedGenre" name="genre" id="genre-select" class="h-9 w-40 rounded-md text-center">
         <option v-for="item of genres" :value="item.id">{{ item.name }}</option>
       </select>
     </div>
 
-    <div class="w-64 pl-5">
+    <div class="select-filter w-64 pl-5">
       <button @click="clearFilter" class="transition ease-in-out delay-50 bg-blue-500 hover:scale-110 hover:bg-orange-500 h-9 w-24 rounded-md">clear</button>
     </div>
   </div>
@@ -95,7 +95,18 @@
     height: auto;
     flex-direction: column;
     gap: 10px;
-    align-items: flex-start;
+    align-items: center;
+  }
+
+  .select-filter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+  }
+
+  .filter-label {
+    display: none;
   }
 }
 </style>
