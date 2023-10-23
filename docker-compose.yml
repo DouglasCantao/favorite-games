@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  app:
+    container_name: app
+    environment:
+      - BASE_API_URL=https://www.freetogame.com/api/games
+      - BASE_API_URL_SINGLE_DATA=https://www.freetogame.com/api/game
+    build:
+      context: ./
+      dockerfile: dev.dockerfile
+    ports:
+      - 3000:3000
