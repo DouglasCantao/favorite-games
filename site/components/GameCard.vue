@@ -22,6 +22,7 @@
   
   const toggleFavorite = computed(() => {
     return (id) => {
+
       if(favoritedGames.value.includes(id)) {
         cardShadowColor.value = 'shadow-rose-500/40';
         return '/heart-icon-filled.svg';

@@ -1,6 +1,6 @@
 export const getFavoritedGames = () => {
   if(process.client) {
-    return JSON.parse(localStorage.getItem('favorites'));
+    return JSON.parse(localStorage.getItem('favorites')) ?? [];
   }
 
   return [];
@@ -10,7 +10,7 @@ export const setFavorite = (game) => {
   const { setFavoriteGame } = useFavoritedGames();
 
   if(process.client) {
-    let games = JSON.parse(localStorage.getItem('favorites'));
+    let games = JSON.parse(localStorage.getItem('favorites')) ?? [];
     if(!games.includes(game.id)){
       games.push(game.id);
     }
@@ -38,7 +38,8 @@ export const fetchFavoritedGames = async () => {
 
   if(process.client) {
     const gamesId = JSON.parse(localStorage.getItem('favorites'));
-    if (gamesId.length) {
+
+    if (gamesId && gamesId.length) {
       const data = await $fetch(`/api/favoritegames/${ gamesId }`);
       initFavoriteGameList(data);
 

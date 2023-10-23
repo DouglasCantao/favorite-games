@@ -18,7 +18,4 @@
 </template>
 
 <style scoped>
-.game__picture {
-  max-width: 50%;
-}
 </style>
