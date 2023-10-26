@@ -43,7 +43,7 @@
 
 </script>
 <template>
-  <div class="game-card flex flex-col shadow-md w-60 " :class="cardShadowColor">
+  <div class="game-card flex flex-col shadow-md w-60" :class="cardShadowColor">
     <ClientOnly>
       <figure>
         <img loading="lazy" class="rounded shadow-2xl" :src="thumbnail" :alt="game.title" />

@@ -1,4 +1,13 @@
 <script setup>
+  useHead({
+    title: 'Games',
+    meta: [
+      {
+        name: 'description',
+        content: 'A list of games that can be filtered by genre, platform and name.',
+      },
+    ],
+  })
   const props = defineProps({
     games: {
       type: Array,

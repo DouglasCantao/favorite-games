@@ -1,5 +1,6 @@
 {
-  "name": "nuxt-app",
+  "name": "favorite-games",
+  "author": "Douglas Cantão",
   "private": true,
   "type": "module",
   "scripts": {

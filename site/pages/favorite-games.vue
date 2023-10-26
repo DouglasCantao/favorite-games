@@ -1,4 +1,13 @@
 <script setup>
+  useHead({
+    title: 'Favorite Games',
+    meta: [
+      {
+        name: 'description',
+        content: 'All games marked as favorite.',
+      },
+    ],
+  })
   fetchFavoritedGames();
   const { favoritesGames } = useFavoritedGames()
 
@@ -11,9 +20,8 @@
     </client-only>
 
     <div v-else>
-      <h3>No Game setted as favorited yeat</h3>
+      <h3>No Game setted as favorited yet!</h3>
     </div>
-
 
   </div>
 </template>
