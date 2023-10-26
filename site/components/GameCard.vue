@@ -52,7 +52,7 @@
         <div class=" text-sky-600 text-xl text-center">{{ title }}</div>
         <div class="text-base">{{ genre }} - {{ platform }}</div>
         <div class="text-base">{{ developer }}</div>
-        <div class="text-center text-sm line-clamp-2">{{ short_description }}</div>
+        <div class="game-description text-center text-sm line-clamp-2">{{ short_description }}</div>
           <img @click="handleFavorites(game)" class="cursor-pointer w-8" :src="toggleFavorite(game.id)"/>
         </div>
     </ClientOnly>
@@ -63,7 +63,11 @@
 
   @media (max-width: 62em) {
     .game-card {
-      width: 90%;
+      width: 100%;
+
+      & img:first-child {
+        width: 100%;
+      }
     }
   }
 
