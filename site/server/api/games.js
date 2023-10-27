@@ -4,24 +4,31 @@ export default defineEventHandler (async (event) => {
   const { platform, category } = getQuery(event);
   let filter = undefined;
 
-  if(platform && category) {
-    filter = `${ platform }&category=${ category }`
+  try {
+    if(platform && category) {
+      filter = `${ platform }&category=${ category }`
+    
+    } else if (platform && !category) {
+      filter = platform
   
-  } else if (platform && !category) {
-    filter = platform
-
-  } 
+    } 
+    
+    API_URL = `${ API_URL }${ filter ? filter : defaultPlatform }`;
   
-  API_URL = `${ API_URL }${ filter ? filter : defaultPlatform }`;
-
-  const getData = async () => {
-    const response = await fetch(`${ API_URL }`);
-    const data = response.json();
-    return data;
+    const getData = async () => {
+      const response = await fetch(`${ API_URL }`);
+      const data = response.json();
+      return data;
+    }
+    let games = await getData();
+  
+    return games
+    
+  } catch (error) {
+    throw createError({
+      message: error.message,
+      statusCode: error.statusCode
+    });
   }
-  let games = await getData();
 
-  return {
-    games: games
-  }
 })

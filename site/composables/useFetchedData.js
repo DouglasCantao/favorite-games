@@ -16,7 +16,5 @@ export const fetchFilteredData = async (filterTerms) => {
   } else {
     data = await useAsyncData('games', () => $fetch('/api/games/'))
   }
-  return {
-    ...data
-  }
+  return data
 }
